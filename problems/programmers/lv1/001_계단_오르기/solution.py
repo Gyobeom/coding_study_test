@@ -12,4 +12,18 @@ def solution(n):
       마지막에 dfs(0) 을 반환.
     """
     answer = 0
+    def dfs(cnt):
+      nonlocal answer
+      # 결과 조건 먼저
+      if cnt == n:
+        answer += 1
+      elif cnt > n:
+        return
+
+      dfs(cnt + 1)
+      dfs(cnt + 2)
+
+    dfs(0)
     return answer
+
+print(solution(4))
