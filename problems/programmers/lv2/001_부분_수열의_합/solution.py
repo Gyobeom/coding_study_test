@@ -1,11 +1,23 @@
+
+
 def solution(nums, target):
-    """nums의 비어있지 않은 부분집합 중 원소 합이 target인 경우의 수를 반환.
-
-    여기에 풀이를 구현하세요. (지금은 빈 템플릿이라 채점 시 실패합니다.)
-
-    힌트: 원소가 최대 20개이므로, 각 원소를 '고른다/안 고른다' 2가지로
-          나누어 모든 조합(2^n)을 완전탐색할 수 있습니다.
-          재귀(DFS)로 인덱스를 하나씩 진행하거나, 비트마스크로 구현해 보세요.
-    """
+    n = len(nums)
     answer = 0
+
+    def dfs(i, cur_sum):
+        nonlocal answer
+        if i == n:
+            if cur_sum == target:
+                  answer += 1
+            # TODO: cur_sum이 target이면 answer 증가
+            #  (주의) 공집합은 세지 않지만, target>=1 이라 빈 조합 합은 0 → 자동 제외됨
+            return
+        # TODO ①: i번째를 고르는 경우로 재귀
+        dfs(i + 1, cur_sum + nums[i])
+        # TODO ②: i번째를 안 고르는 경우로 재귀
+        dfs(i + 1, cur_sum)
+
+    dfs(0, 0)
     return answer
+
+print(solution([1,2,3,4,5,6,7],8))  # 정답 (1,2,6), (1,3,4), (1,7), (3,5)
