@@ -11,19 +11,14 @@ def solution(n):
         - 그 외    이면 dfs(pos+1) + dfs(pos+2)
       마지막에 dfs(0) 을 반환.
     """
-    answer = 0
     def dfs(cnt):
-      nonlocal answer
       # 결과 조건 먼저
       if cnt == n:
-        answer += 1
+        return 1
       elif cnt > n:
-        return
+        return 0
+      return dfs(cnt + 1) + dfs(cnt + 2)
 
-      dfs(cnt + 1)
-      dfs(cnt + 2)
-
-    dfs(0)
-    return answer
+    return dfs(0)
 
 print(solution(4))
