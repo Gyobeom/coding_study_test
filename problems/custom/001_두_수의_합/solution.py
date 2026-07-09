@@ -3,5 +3,10 @@ def solution(numbers, target):
 
     여기에 풀이를 구현하세요. (지금은 빈 템플릿이라 채점 시 실패합니다.)
     """
-    answer = None
+
+    for i in range(len(numbers) - 1):
+        for j in range(i + 1, len(numbers)):
+            if numbers[i] + numbers[j] == target:
+                answer = [i,j]
+                break
     return answer
