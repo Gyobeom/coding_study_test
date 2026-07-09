@@ -22,10 +22,19 @@ def main():
     if not tests:
         print("채점할 문제가 없습니다 (problems/ 하위 test.py 없음).")
         return
+    # 자식 프로세스가 UTF-8로 출력하도록 강제(Windows cp949 환경 대비)
+    env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUTF8="1")
     results = []
     for t in tests:
         rel = os.path.relpath(os.path.dirname(t), PROBLEMS)
-        proc = subprocess.run([sys.executable, t], capture_output=True, text=True)
+        proc = subprocess.run(
+            [sys.executable, t],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            env=env,
+        )
         ok = proc.returncode == 0
         # judge.py의 마지막 결과 줄만 추출
         summary = ""
