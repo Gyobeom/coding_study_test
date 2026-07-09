@@ -1,14 +1,17 @@
 def solution(digits):
-    """digits의 원소를 하나 이상 골라 순서대로 이어 붙여 만들 수 있는
-    서로 다른 정수의 개수를 반환.
+    n = len(digits)
+    used = [False] * n
+    made = set()                     # 만든 수를 담을 집합(중복 자동 제거)
 
-    여기에 풀이를 구현하세요. (지금은 빈 템플릿이라 채점 시 실패합니다.)
+    def dfs(cur):                    # cur = 지금까지 이어붙인 문자열
+        for i in range(n):
+            if used[i]:
+                continue
+            used[i] = True
+            nxt = cur + str(digits[i])   # i를 뒤에 이어붙임
+            made.add(int(nxt))           # 이 시점의 수를 집합에 추가
+            dfs(nxt)                     # TODO ①: nxt를 들고 더 깊이
+            used[i] = False              # TODO ②: 되돌리기
 
-    힌트:
-      - 순서가 중요하고 각 원소는 한 번만 → 방문 배열 used 를 둔다.
-      - DFS(현재까지_만든_문자열): 아직 안 쓴 원소를 하나 붙여 재귀,
-        재귀에서 돌아오면 used 를 다시 False 로(백트래킹).
-      - 재귀에 들어올 때마다 지금까지 만든 수를 set 에 넣으면 중복 자동 제거.
-    """
-    answer = 0
-    return answer
+    dfs("")                          # 빈 문자열에서 시작
+    return len(made)                 # 서로 다른 수의 개수
