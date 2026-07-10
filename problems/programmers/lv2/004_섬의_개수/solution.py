@@ -10,4 +10,30 @@ def solution(grid):
          (재귀 앞에서 경계 밖/바다/방문됨이면 즉시 return)
     """
     answer = None
-    return answer
+
+    # 상,하,좌,우로 이동 해야함
+    # 이동 한 경우에는 이동 한 것으로 쳐야함. (방문 기록 필요)
+    # 좌표를 벗어나는 경우 확인 필요
+    def grid_range_check(r,c):
+      return 0 <= r and r < len(grid) and 0 <= c and c < len(grid[0]) and grid[r][c] != 0
+
+    cnt = 0
+
+    def dfs(r,c):
+      grid[r][c] = 0
+
+      for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+          if grid_range_check(r+dr, c+dc) == True:
+            dfs(r + dr, c + dc)
+
+    for r in range(len(grid)):
+      for c in range(len(grid[0])):
+        if grid[r][c] == 1:
+          cnt += 1
+          dfs(r,c)
+
+    return cnt
+
+# print(solution([[1, 1, 0],
+#         [0, 1, 0],
+#         [0, 0, 1]]))
