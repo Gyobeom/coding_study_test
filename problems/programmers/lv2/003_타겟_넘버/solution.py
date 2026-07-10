@@ -12,16 +12,22 @@ def solution(numbers, target):
     """
 
     # dfs 재귀 함수로 풀도록 + / - 2개의 경우의 수로 진행. 더한 값을 매개변수로 전달
-    answer = 0
-    def dfs(i, tot):
-      nonlocal answer
-      if i == len(numbers) - 1:
-        if tot == target:
-          answer += 1
-        return
+    # answer = 0
+    # def dfs(i, tot):
+    #   nonlocal answer
+    #   if i == len(numbers) - 1:
+    #     if tot == target:
+    #       answer += 1
+    #     return
 
-      dfs(i + 1, tot + numbers[i+1])
-      dfs(i + 1, tot - numbers[i+1])
-    dfs(-1,0)
-    return answer
+    #   dfs(i + 1, tot + numbers[i+1])
+    #   dfs(i + 1, tot - numbers[i+1])
+    # dfs(-1,0)
+    # return answer
+    n = len(numbers)
+    def dfs(i, tot):
+      if i == n:
+        return 1 if tot == target else 0
+      return dfs(i + 1, tot + numbers[i]) + dfs(i + 1, tot - numbers[i])
+    return dfs(0,0)
 # print(solution([4, 1, 2, 1],2))
