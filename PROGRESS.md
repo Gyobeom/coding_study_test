@@ -6,7 +6,7 @@
 
 | 항목 | 값 |
 |------|----|
-| 총 출제 | 5 |
+| 총 출제 | 6 |
 | 풀이 완료 | 5 |
 | 통과 | 5 |
 
@@ -18,6 +18,7 @@
 | 2026-07-09 | programmers | [lv1/001_계단_오르기](problems/programmers/lv1/001_계단_오르기/) | ★☆☆ | 🟢 통과 | 8/8 | DFS 입문(nonlocal 누적). 개선: return 합산/메모이제이션 |
 | 2026-07-09 | programmers | [lv2/001_부분_수열의_합](problems/programmers/lv2/001_부분_수열의_합/) | ★★☆ | 🟢 통과 | 10/10 | 완전탐색 DFS(넣는다/뺀다 2갈래) |
 | 2026-07-09 | programmers | [lv2/002_이어붙여_만든_수](problems/programmers/lv2/002_이어붙여_만든_수/) | ★★☆ | 🟢 통과 | 9/9 | 완전탐색 DFS+방문배열(순열) |
-| 2026-07-10 | programmers | [lv2/003_타겟_넘버](problems/programmers/lv2/003_타겟_넘버/) | ★★☆ | 🟢 통과 | 8/8 | 완전탐색 DFS(+/− 2갈래) |
+| 2026-07-10 | programmers | [lv2/003_타겟_넘버](problems/programmers/lv2/003_타겟_넘버/) | ★★☆ | 🟢 통과 | 8/8 | 완전탐색 DFS(+/− 2갈래), return형+메모 학습 |
+| 2026-07-10 | programmers | [lv2/004_섬의_개수](problems/programmers/lv2/004_섬의_개수/) | ★★☆ | 🟡 출제됨 | -/8 | 격자 DFS(플러드필, 4방향+2D 방문배열) |
 
 <!-- 상태 범례: 🟡 출제됨 · 🟠 풀이중 · 🟢 통과 · 🔴 실패(재도전) -->
