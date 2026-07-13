@@ -1,9 +1,17 @@
 def solution(n, computers):
-    """여기에 풀이를 구현한다.
+    visited = [False] * n
 
-    - 함수 이름은 반드시 `solution` 으로 둔다(채점기가 이 이름을 호출한다).
-    - n: 컴퓨터 수, computers: n×n 인접 행렬.
-    - 반환값이 곧 정답이다. print 가 아니라 return 으로 돌려준다.
-    """
-    answer = None
-    return answer
+    def dfs(i):
+        visited[i] = True
+        for j in range(n):
+            if computers[i][j] == 1 and not visited[j]:
+                dfs(j)          # 격자의 dfs(r+dr, c+dc) 자리
+
+    cnt = 0
+    for i in range(n):          # 격자의 이중 for문 → 여기선 단일 for
+        if not visited[i]:      # 아직 방문 안 한 컴퓨터를 만나면
+            cnt += 1            # 새 네트워크 하나 발견
+            dfs(i)
+                    # 그 네트워크 전체를 방문 처리
+
+    return cnt
