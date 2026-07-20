@@ -20,3 +20,6 @@ Thumbs.db
 # 임시/스크래치
 scratch/
 *.tmp
+
+# 개인 문서 (git 이력에서 제외)
+커리큘럼.md
