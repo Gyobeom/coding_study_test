@@ -8,7 +8,7 @@ def solution(participant, completion):
     - 반환값: 완주하지 못한 선수의 이름(문자열) 하나를 return 한다.
     """
     # 완주하지 못한 선수의 이름을 반환 (찾아햠) -> 해시 풀이
-    # 완주하지 못한 선수는 항상 정확히 한명, 그외에는 동명이인 존재
+    # 참석자의 수와, 완주자의 수를 비교 진행.
 
     # 완주자 개수 정리
     participant_list = Counter(participant)
