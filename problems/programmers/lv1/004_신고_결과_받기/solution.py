@@ -19,8 +19,7 @@ def solution(id_list, report, k):
 
     for new_report in new_report_dict:
         if len(new_report_dict[new_report]) >= k:
-            temp_list = new_report_dict[new_report]
-            mid_result +=temp_list
+            mid_result += new_report_dict[new_report]
 
     c = Counter(mid_result)
 
