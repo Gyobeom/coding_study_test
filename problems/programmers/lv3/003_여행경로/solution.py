@@ -15,34 +15,32 @@ def solution(tickets):
     # 리스트 알파벳 정렬
     tickets.sort(key=lambda x:x[1])
 
-    # 방문 기록
-    vistied = [False] * len(tickets)
-    def dfs(ticket_idx, history):
+    def dfs(ticket_idx):
       vistied[ticket_idx] = True
 
       for j in range(len(tickets)):
         # 아직 방문하지 않았고, 도착지가 방문할 출발지와 동일한 경우
         if not vistied[j] and tickets[j][0] == tickets[ticket_idx][1]:
-          new_history = [*history, tickets[j][1]]
-          if len(new_history) == len(tickets) + 1:
-            return new_history
-          result = dfs(j,[*history, tickets[j][1]])
-          if result == None:
-            vistied[j] = False
-            continue
-          else:
+          history.append(tickets[j][1])
+          # new_history = [*history, tickets[j][1]]
+          if len(history) == len(tickets) + 1:
+            return history
+          result = dfs(j)
+          if result:
             return result
+          vistied[j] = False
+          history.pop()
 
     if len(tickets) == 1:
       return [tickets[0][0],tickets[0][1]]
     else:
       for i in range(len(tickets)):
         vistied = [False] * len(tickets)
+        history = ['ICN']
         if tickets[i][0] == 'ICN':
-          result = dfs(i,[tickets[i][0],tickets[i][1]])
-          if result == None:
-            continue
-          else:
+          history.append(tickets[i][1])
+          result = dfs(i)
+          if result:
             return result
 
 print(solution([['ICN', 'AAA'], ['ICN', 'BBB'], ['BBB', 'ICN']]))
