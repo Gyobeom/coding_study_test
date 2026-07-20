@@ -5,5 +5,16 @@ def solution(nums):
     - 인자: nums(폰켓몬 종류 번호 리스트, 길이는 항상 짝수).
     - 반환값: N/2마리를 골랐을 때 가질 수 있는 종류 수의 최댓값(정수)을 return 한다.
     """
-    answer = None
-    return answer
+
+    # 가능한 많은 종류의 포켓몬을 데려가려고 함. (최대)
+    # N/2 마리를 골랐을 때 가질 수 있는 종류 수의 최대 값 반환
+
+    half_num = len(nums) // 2
+    set_nums = set(nums)
+
+    if half_num < len(set_nums):
+        return half_num
+    else:
+        return len(set_nums)
+
+print(solution([1,1,2,2,3]))
