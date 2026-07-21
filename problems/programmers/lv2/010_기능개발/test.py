@@ -1,0 +1,38 @@
+"""채점 테스트 (Claude가 작성). 실행: python test.py"""
+import os
+import sys
+
+# --- 저장소 루트를 찾아 sys.path에 추가 (수정 불필요) ---
+_here = os.path.dirname(os.path.abspath(__file__))
+_cur = _here
+while not os.path.isfile(os.path.join(_cur, "lib", "judge.py")):
+    _parent = os.path.dirname(_cur)
+    if _parent == _cur:
+        raise RuntimeError("저장소 루트(lib/judge.py)를 찾지 못했습니다.")
+    _cur = _parent
+sys.path[:0] = [_here, _cur]
+# ---------------------------------------------------------
+
+from lib.judge import check
+from solution import solution
+
+# 테스트 케이스: (인자_튜플, 기대값)
+cases = [
+    # 1) 공식 예시 1 — 앞 기능이 끝날 때 뒤 기능이 함께 배포
+    (([93, 30, 55], [1, 30, 5]), [2, 1]),
+    # 2) 예시 2 — 일수 [5,10,1,1,20,1]. 앞이 끝날 때 대기 기능이 함께 묶임
+    (([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]), [1, 3, 2]),
+    # 3) 최소 규모 — 기능 1개
+    (([50], [10]), [1]),
+    # 4) 앞이 가장 오래 걸림 — 전부 한 날에 배포
+    (([10, 99, 99], [1, 100, 100]), [3]),
+    # 5) 각자 따로 배포 — 뒤로 갈수록 늦게 끝남
+    (([90, 80, 70], [10, 1, 1]), [1, 1, 1]),
+    # 6) 같은 날 동시 완성 — 셋이 한꺼번에 배포
+    (([80, 80, 80], [20, 20, 20]), [3]),
+    # 7) 큰 규모 근처 — 100개, 앞이 가장 느리면 전부 한 묶음
+    (([1] + [99] * 99, [1] + [100] * 99), [100]),
+]
+
+if __name__ == "__main__":
+    check(solution, cases)
