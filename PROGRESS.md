@@ -35,7 +35,7 @@
 | 2026-07-20 | programmers | [lv1/005_K번째수](problems/programmers/lv1/005_K번째수/) | ★☆☆ | 🟢 통과 | 7/7 | 3주차: 정렬(구간 자르기→sort→k-1 인덱스) |
 | 2026-07-20 | programmers | [lv2/008_가장_큰_수](problems/programmers/lv2/008_가장_큰_수/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 정렬(key=str(x)*3 내림차순, 결과 0 시작이면 '0') |
 | 2026-07-20 | programmers | [lv2/009_올바른_괄호](problems/programmers/lv2/009_올바른_괄호/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 스택(여는 괄호 push, 닫는 괄호 pop, 빈 스택에 pop이면 False) |
-| 2026-07-20 | programmers | [lv2/010_기능개발](problems/programmers/lv2/010_기능개발/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 배포 묶음(입력 복사본, 앞이 미완이면 뒤 대기 플래그). 초기 오답 [4,1,1]→순서 규칙 이해 후 [1,3,2] |
+| 2026-07-20 | programmers | [lv2/010_기능개발](problems/programmers/lv2/010_기능개발/) | ★★☆ | 🟢 통과 | 9/9 | 3주차: 배포 묶음. 시뮬레이션→완성일수(math.ceil) O(N) 리팩터. 올림 누락 반례(같은 날 완성) test에 추가 |
 | 2026-07-20 | programmers | [lv2/011_프로세스](problems/programmers/lv2/011_프로세스/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 큐(꺼낸 뒤 더 급한 게 남았으면 재삽입, (val,idx)로 추적) |
 
 <!-- 상태 범례: 🟡 출제됨 · 🟠 풀이중 · 🟢 통과 · 🔴 실패(재도전) · 📎 예제(Claude가 답안 제시, 자력 풀이 아님) -->
