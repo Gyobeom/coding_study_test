@@ -7,8 +7,8 @@
 | 항목 | 값 |
 |------|----|
 | 총 출제 | 23 |
-| 풀이 완료 | 19 |
-| 통과 | 19 |
+| 풀이 완료 | 20 |
+| 통과 | 20 |
 
 ## 이력
 
@@ -33,7 +33,7 @@
 | 2026-07-20 | programmers | [lv1/004_신고_결과_받기](problems/programmers/lv1/004_신고_결과_받기/) | ★☆☆ | 🟢 통과 | 7/7 | 2주차: 해시+구현. set 중복신고 제거→피신고자별 신고자 집계→정지자 신고자 Counter |
 | 2026-07-20 | programmers | [lv2/007_의상](problems/programmers/lv2/007_의상/) | ★★☆ | 🟢 통과 | 7/7 | 2주차: 해시 응용. 종류별 개수 세고 (개수+1) 곱한 뒤 -1(전부 안 입는 경우 제외) |
 | 2026-07-20 | programmers | [lv1/005_K번째수](problems/programmers/lv1/005_K번째수/) | ★☆☆ | 🟢 통과 | 7/7 | 3주차: 정렬(구간 자르기→sort→k-1 인덱스) |
-| 2026-07-20 | programmers | [lv2/008_가장_큰_수](problems/programmers/lv2/008_가장_큰_수/) | ★★☆ | 🟡 출제됨 | - | 3주차: 정렬(문자열 커스텀 key) |
+| 2026-07-20 | programmers | [lv2/008_가장_큰_수](problems/programmers/lv2/008_가장_큰_수/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 정렬(key=str(x)*3 내림차순, 결과 0 시작이면 '0') |
 | 2026-07-20 | programmers | [lv2/009_올바른_괄호](problems/programmers/lv2/009_올바른_괄호/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 스택(여는 괄호 push, 닫는 괄호 pop, 빈 스택에 pop이면 False) |
 | 2026-07-20 | programmers | [lv2/010_기능개발](problems/programmers/lv2/010_기능개발/) | ★★☆ | 🟡 출제됨 | - | 3주차: 큐/스택(배포 묶음) |
 | 2026-07-20 | programmers | [lv2/011_프로세스](problems/programmers/lv2/011_프로세스/) | ★★☆ | 🟡 출제됨 | - | 3주차: 큐(우선순위) |
