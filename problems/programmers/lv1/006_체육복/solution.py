@@ -21,36 +21,22 @@ def solution(n, lost, reserve):
     # 체육 수업을 들을 수 있는 학생의 최대 값 반환
 
     # 먼저 reserve에 lost 값이 있는 확인 필요 (도난 당했지만 여벌 가져온 거 체크)
-    new_reserve = list(filter(lambda x: x not in lost,reserve))
-    new_lost = list(filter(lambda x: x not in reserve,lost))
+    new_reserve = set(reserve) - set(lost)
+    new_lost = set(lost) - set(reserve)
 
     # 전체 반복문 순회 하면서 안가져온 배열에 값이 있는지 확인하고, 있다면,
     # reserve에서 +1,-1로 있는지 확인하고 있으면 reserve 값 없애고 카운트 증가
 
-    cnt = 0
-
-    if len(new_lost) == 0:
-        return n
-    else:
-        for i in range(1, n + 1):
-            if i in new_lost:
-                # 1일 때는 플러스만 확인 하도록
-                if i == 1:
-                    if i + 1 in new_reserve:
-                        new_reserve.remove(i+1)
-                        cnt += 1
-                #1이 아닌 경우에는 앞, 뒤 먼저 확인
-                else:
-                    if i - 1 in new_reserve:
-                        new_reserve.remove(i - 1)
-                        cnt += 1
-                    else:
-                        if i + 1 in new_reserve:
-                            new_reserve.remove(i + 1)
-                            cnt += 1
-            else:
+    cnt = n - len(new_lost)
+    for i in range(1, n + 1):
+        if i in new_lost:
+            if i - 1 in new_reserve:
+                new_reserve.discard(i - 1)
                 cnt += 1
-        return cnt
+            elif i + 1 in new_reserve:
+                new_reserve.discard(i + 1)
+                cnt += 1
+    return cnt
 
 # print(solution(3,[3],[1]))
 

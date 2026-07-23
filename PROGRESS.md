@@ -37,7 +37,7 @@
 | 2026-07-20 | programmers | [lv2/009_올바른_괄호](problems/programmers/lv2/009_올바른_괄호/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 스택(여는 괄호 push, 닫는 괄호 pop, 빈 스택에 pop이면 False) |
 | 2026-07-20 | programmers | [lv2/010_기능개발](problems/programmers/lv2/010_기능개발/) | ★★☆ | 🟢 통과 | 9/9 | 3주차: 배포 묶음. 시뮬레이션→완성일수(math.ceil) O(N) 리팩터. 올림 누락 반례(같은 날 완성) test에 추가 |
 | 2026-07-20 | programmers | [lv2/011_프로세스](problems/programmers/lv2/011_프로세스/) | ★★☆ | 🟢 통과 | 7/7 | 3주차: 큐(꺼낸 뒤 더 급한 게 남았으면 재삽입, (val,idx)로 추적) |
-| 2026-07-20 | programmers | [lv1/006_체육복](problems/programmers/lv1/006_체육복/) | ★☆☆ | 🟢 통과 | 8/8 | 4주차: 그리디(여벌·도난 겹침 제거 후 앞→뒤 순 대여). 완전탐색 2000건 대조 일치 |
+| 2026-07-20 | programmers | [lv1/006_체육복](problems/programmers/lv1/006_체육복/) | ★☆☆ | 🟢 통과 | 8/8 | 4주차: 그리디(겹침 제거 후 앞→뒤 순 대여). set 차집합·discard로 O(N) 리팩터. 완전탐색 3000건 대조 일치 |
 | 2026-07-20 | programmers | [lv2/012_큰_수_만들기](problems/programmers/lv2/012_큰_수_만들기/) | ★★☆ | 🟡 출제됨 | - | 4주차: 그리디·스택(k개 제거) |
 | 2026-07-20 | programmers | [lv2/013_구명보트](problems/programmers/lv2/013_구명보트/) | ★★☆ | 🟡 출제됨 | - | 4주차: 그리디(투 포인터) |
 | 2026-07-20 | programmers | [lv2/014_소수_찾기](problems/programmers/lv2/014_소수_찾기/) | ★★☆ | 🟡 출제됨 | - | 4주차: 완전탐색(순열+소수 판정) |
