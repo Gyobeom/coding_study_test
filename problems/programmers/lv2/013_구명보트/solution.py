@@ -7,5 +7,16 @@ def solution(people, limit):
         limit  (int)       : 보트 한 대의 무게 제한.
     - 반환값: 모든 사람을 구출하는 데 필요한 보트 개수의 최솟값(int)을 return 한다.
     """
-    answer = None
-    return answer
+    sorted_people = sorted(people, reverse=True)
+    shipped_count = 0
+
+    while sorted_people:
+        if len(sorted_people) > 1 and (sorted_people[0] + sorted_people[-1]) <= limit:
+            shipped_count += 1
+            sorted_people.pop(0)
+            sorted_people.pop(-1)
+        else:
+            shipped_count += 1
+            sorted_people.pop(0)
+    return shipped_count
+
