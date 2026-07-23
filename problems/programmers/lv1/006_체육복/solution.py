@@ -8,5 +8,49 @@ def solution(n, lost, reserve):
         reserve(list[int]) : 여벌 체육복을 가져온 학생 번호 목록.
     - 반환값: 체육 수업을 들을 수 있는 학생 수의 최댓값(int)을 return 한다.
     """
-    answer = None
-    return answer
+
+    # 학생들에거 1~n 번까지의 체육복 존재 * 일부 학생 체육복 도난
+    # 여벌 체육복을 가져온 학생들은 바로 앞 번호 또는 바로 뒤 번호 학생 중 체육복이 없는 학생에게 빌려줄 수 있음
+
+    # 조건
+    # 한 학생은 자기 바로 앞 또는 바로 뒤 번호의 학생에게만 빌려줄 수 있음
+    # 여벌을 가진 학생이 여러명에게 빌려줄 수 없음. 오로지 한명 한테만 빌려줄 수 있음
+    # 여벌을 가져왔지만 자기 자신이 체육복을 도난당했을 경우 빌려줄 수 없음.
+
+    # 결과
+    # 체육 수업을 들을 수 있는 학생의 최대 값 반환
+
+    # 먼저 reserve에 lost 값이 있는 확인 필요 (도난 당했지만 여벌 가져온 거 체크)
+    new_reserve = list(filter(lambda x: x not in lost,reserve))
+    new_lost = list(filter(lambda x: x not in reserve,lost))
+
+    # 전체 반복문 순회 하면서 안가져온 배열에 값이 있는지 확인하고, 있다면,
+    # reserve에서 +1,-1로 있는지 확인하고 있으면 reserve 값 없애고 카운트 증가
+
+    cnt = 0
+
+    if len(new_lost) == 0:
+        return n
+    else:
+        for i in range(1, n + 1):
+            if i in new_lost:
+                # 1일 때는 플러스만 확인 하도록
+                if i == 1:
+                    if i + 1 in new_reserve:
+                        new_reserve.remove(i+1)
+                        cnt += 1
+                #1이 아닌 경우에는 앞, 뒤 먼저 확인
+                else:
+                    if i - 1 in new_reserve:
+                        new_reserve.remove(i - 1)
+                        cnt += 1
+                    else:
+                        if i + 1 in new_reserve:
+                            new_reserve.remove(i + 1)
+                            cnt += 1
+            else:
+                cnt += 1
+        return cnt
+
+# print(solution(3,[3],[1]))
+
