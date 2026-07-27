@@ -35,4 +35,4 @@ def solution(scoville, K):
     else:
         return count
 
-print(solution([5, 5, 5, 5], 10))
+# print(solution([5, 5, 5, 5], 10))
