@@ -1,11 +1,15 @@
 def solution(brown, yellow):
-    """여기에 풀이를 구현한다.
+    square_size = brown + yellow
+    square_w_h_list = []
 
-    - 함수 이름은 반드시 `solution` 으로 둔다(채점기가 이 이름을 호출한다).
-    - 인자:
-        brown  (int) : 갈색(테두리) 격자의 수.
-        yellow (int) : 노란색(안쪽) 격자의 수.
-    - 반환값: 카펫의 [가로, 세로]를 담은 리스트(list[int])를 return 한다. 가로 >= 세로.
-    """
-    answer = None
-    return answer
+    i = 1
+    while i * i <= square_size:
+        if square_size % i == 0:
+            mok = square_size // i
+            square_w_h_list.append([mok,i])
+        i += 1
+
+    for i in range(len(square_w_h_list)):
+        if (square_w_h_list[i][0] - 2) * (square_w_h_list[i][1] - 2) == yellow:
+            return square_w_h_list[i]
+# print(solution(10,2))
