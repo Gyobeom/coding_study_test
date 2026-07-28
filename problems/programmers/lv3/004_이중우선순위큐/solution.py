@@ -100,4 +100,3 @@ def solution(operations):
 
     if len(asc_number_list) == 0 and len(desc_number_list) == 0:
         return [0, 0]
-# print(solution(['I -45', 'I 653', 'D 1', 'I -642', 'I 45', 'I 97', 'D 1', 'D -1', 'I 333']))
