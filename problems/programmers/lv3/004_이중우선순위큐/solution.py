@@ -1,5 +1,6 @@
 import heapq
 from collections import defaultdict
+
 def solution(operations):
     """명령을 모두 처리한 뒤 [최댓값, 최솟값]을 반환한다.
 
@@ -23,11 +24,38 @@ def solution(operations):
     asc_deleted_dict = defaultdict(int)
     desc_deleted_dict = defaultdict(int)
     insert_number_count = 0
+    standard_number = 20000000001
+
+    # 배열에서 값 추출 할 때
+    def extract_number(type):
+        while True:
+            if type == 'asc':
+                if asc_number_list:
+                    pop_number = heapq.heappop(asc_number_list)
+                    # 최솟 값 배열에서 빼고, 만약 이미 최댓값에서 뺀 수라면, 제거 후 다시 뽑음
+                    if desc_deleted_dict[pop_number] != 0:
+                        desc_deleted_dict[pop_number] -= 1
+                    # 신규로 등장한 최솟값 뺴야 한다면, 최댓값 배열에서 뺄 수 있도록 사전 추가
+                    else:
+                        return pop_number
+                else:
+                    return 0
+            elif type == 'desc':
+                if desc_number_list:
+                    pop_number = heapq.heappop(desc_number_list)
+                    # 최댓 값 배열에서 빼고, 만약 이미 최솟값에서 뺀 수라면, 제거 후 다시 뽑음
+                    if asc_deleted_dict[pop_number] != 0:
+                        asc_deleted_dict[pop_number] -= 1
+                    # 신규로 등장한 최댓값 뺄 때, 최소 값 배열에서 뺄 수 있도록 사전 추가
+                    else:
+                        return pop_number
+                else:
+                    return 0
 
     for operation in operations:
         operate, number = operation.split()
         if operate == 'I':
-            number = int(number) + 2000000000
+            number = int(number) + standard_number
             heapq.heappush(asc_number_list, number)
             heapq.heappush(desc_number_list,-number)
             insert_number_count += 1
@@ -38,61 +66,38 @@ def solution(operations):
             else:
                 # 최솟값 빼야 할 때,
                 if number == '-1':
-                    while True:
-                        pop_number = heapq.heappop(asc_number_list)
-                        # 최솟 값 배열에서 빼고, 만약 이미 최댓값에서 뺀 수라면, 제거 후 다시 뽑음
-                        if desc_deleted_dict[pop_number] != 0:
-                            desc_deleted_dict[pop_number] -= 1
-                        # 신규로 등장한 최솟값 뺴야 한다면, 최댓값 배열에서 뺄 수 있도록 사전 추가
-                        else:
-                            asc_deleted_dict[-pop_number] += 1
-                            break
+                    extracted_number = extract_number('asc')
+                    asc_deleted_dict[-extracted_number] += 1
                     insert_number_count -= 1
                 # 최댓값 빼야 할 때
                 else:
-                    while True:
-                        pop_number = heapq.heappop(desc_number_list)
-                        # 최댓 값 배열에서 빼고, 만약 이미 최솟값에서 뺀 수라면, 제거 후 다시 뽑음
-                        if asc_deleted_dict[pop_number] != 0:
-                            asc_deleted_dict[pop_number] -= 1
-                        # 신규로 등장한 최댓값 뺄 때, 최소 값 배열에서 뺄 수 있도록 사전 추가
-                        else:
-                            desc_deleted_dict[-pop_number] += 1
-                            break
+                    extracted_number = extract_number('desc')
+                    desc_deleted_dict[-extracted_number] += 1
                     insert_number_count -= 1
-
-        # 최종적으로 제거 해야 하는 부분 제거 진행.
 
     min_number = 0
     max_number = 0
 
-    while asc_number_list:
-        pop_number = heapq.heappop(asc_number_list)
-        if desc_deleted_dict[pop_number] != 0:
-            desc_deleted_dict[pop_number] -= 1
-        else:
-            min_number = pop_number - 2000000000
-            break
-    while desc_number_list:
-        pop_number = heapq.heappop(desc_number_list)
-        if asc_deleted_dict[pop_number] != 0:
-            asc_deleted_dict[pop_number] -= 1
-        else:
-            max_number = pop_number + 2000000000
-            break
 
-    if min_number > 0 or max_number > 0:
+    # 최솟 값 배열에 값이 존재할 때 최종 정리
+    if asc_number_list:
+        extracted_number = extract_number('asc')
+        if extracted_number != 0:
+            min_number = extracted_number - standard_number
+        else:
+            min_number = extracted_number
+
+    # 최댓 값 배열에 값이 존재할 때 최종 정리
+    if desc_number_list:
+        extracted_number = extract_number('desc')
+        if extracted_number != 0:
+            max_number = extracted_number + standard_number
+        else:
+            max_number = extracted_number
+
+    if insert_number_count > 0:
         return[-max_number,min_number]
 
-    # 최종적으로 비어 있을 때
     if len(asc_number_list) == 0 and len(desc_number_list) == 0:
         return [0, 0]
-
-    else:
-        # # min 숫자의 경우 2000000000을 더했으니 다시 빼주고
-        # min_number = heapq.heappop(asc_number_list) - 2000000000
-        # # max 숫자의 경우 2000000000을 더하고 음수로 변경했으니 다시 더해서 원래 값으로 변경
-        # max_number = heapq.heappop(desc_number_list) + 2000000000
-        return [-max_number, min_number]
-
-print(solution(['I 1', 'I 2', 'D 1', 'D -1', 'D 1']))
+# print(solution(['I -45', 'I 653', 'D 1', 'I -642', 'I 45', 'I 97', 'D 1', 'D -1', 'I 333']))
