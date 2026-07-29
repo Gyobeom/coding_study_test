@@ -43,7 +43,7 @@
 | 2026-07-20 | programmers | [lv2/014_소수_찾기](problems/programmers/lv2/014_소수_찾기/) | ★★☆ | 🟢 통과 | 8/8 | 4주차: 완전탐색(permutations 전체 길이+√N 소수판정+set 중복제거). 리딩제로 스킵 안전성 3000건 대조 |
 | 2026-07-20 | programmers | [lv2/015_카펫](problems/programmers/lv2/015_카펫/) | ★★☆ | 🟢 통과 | 8/8 | 4주차: 완전탐색(넓이 약수 √N 순회+역산). 초기 O(N²)·print 버그→√N return 수정. 5000건 대조 |
 | 2026-07-20 | programmers | [lv2/016_더_맵게](problems/programmers/lv2/016_더_맵게/) | ★★☆ | 🟢 통과 | 9/9 | 5주차: 최소 힙(가장 안 매운 두 개 섞기 반복, 남은 1개<K면 -1). 참조 5000건 대조 |
-| 2026-07-20 | programmers | [lv3/004_이중우선순위큐](problems/programmers/lv3/004_이중우선순위큐/) | ★★★ | 🟢 통과 | 14/14 | 5주차: 두 힙+지연삭제. 버그 2연속(stale 되살아남→삭제 dict / 0-sentinel 회귀→count로 판단). 반례 5건 test, 참조 4.5만건 대조 |
+| 2026-07-20 | programmers | [lv3/004_이중우선순위큐](problems/programmers/lv3/004_이중우선순위큐/) | ★★★ | 🟢 통과 | 16/16 | 5주차: 두 힙+지연삭제. 재작성 중 stale 버그 반복(D 연산도 pop_number로 stale 스킵해야, 대칭 2곳). 반례 7건 test, 참조 7만건 대조 |
 | 2026-07-20 | programmers | [lv3/005_입국심사](problems/programmers/lv3/005_입국심사/) | ★★★ | 🟡 출제됨 | - | 5주차: 이분탐색(파라메트릭 서치) |
 
 <!-- 상태 범례: 🟡 출제됨 · 🟠 풀이중 · 🟢 통과 · 🔴 실패(재도전) · 📎 예제(Claude가 답안 제시, 자력 풀이 아님) -->
