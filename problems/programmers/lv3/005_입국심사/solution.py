@@ -9,17 +9,15 @@ def solution(n, times):
     """
     # 단조성 성립 시간을 증가시키고, 각 심사관이 심사할 수 있는 시간으로 나누어서 최종적으로 반환 값과 일치하면 반환
 
-    # 시간 정렬
-    times.sort()
     left, right = 1, min(times) * n
     ans = right
 
-    def check_spped(times, goal_time):
-        return sum(math.ceil(goal_time // time) for time in times)
+    def check_time(times, goal_time):
+        return sum(goal_time // time for time in times)
 
     while left <= right:
         mid = (left + right) // 2
-        if check_spped(times,mid) >= n:
+        if check_time(times,mid) >= n:
             ans = mid
             right = mid - 1
         else:
