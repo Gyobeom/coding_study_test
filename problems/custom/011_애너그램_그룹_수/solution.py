@@ -14,6 +14,6 @@ def solution(words):
 
     for word in words:
         sorted_word = ''.join(sorted(word))
-        word_dict[sorted_word] = word_dict.get(sorted_word,0) + 1
+        word_dict[sorted_word] = word_dict.get(sorted_word,0)
 
     return len(word_dict)
