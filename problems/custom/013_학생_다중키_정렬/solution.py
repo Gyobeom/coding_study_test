@@ -7,5 +7,8 @@ def solution(students):
       이름만 순서대로 담은 리스트를 return 한다.
     - 반환값이 곧 정답이다. print 가 아니라 return 으로 돌려준다.
     """
-    answer = None
-    return answer
+
+    students = sorted(students,key=lambda x:(-x[1],x[0]))
+    extracted = [student[0] for student in students]
+    return extracted
+
